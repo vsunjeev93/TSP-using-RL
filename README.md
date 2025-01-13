@@ -1,2 +1,2 @@
 # TSP-using-RL
-solving TSP using reinforcement learning
+solving TSP using transformers and reinforcement learning
