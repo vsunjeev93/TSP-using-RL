@@ -9,6 +9,7 @@ model=Transformer(**params)
 model.load_state_dict(torch.load('actor_20.pt'))
 model.eval()
 test_input=torch.rand((1,city,2)).to(device).repeat(512,1,1)
-out_tour,_=model(test_input)
+with torch.no_grad():
+    out_tour,_=model(test_input)
 distance=torch.sum(torch.linalg.vector_norm(out_tour[:,:-1,:]-out_tour[:,1:,:],dim=2),dim=1)+torch.linalg.vector_norm(out_tour[:,0,:]-out_tour[:,-1,:],dim=1)
 print(distance)
